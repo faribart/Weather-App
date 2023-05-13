@@ -50,7 +50,7 @@ li {
 
 
 .weather-temp img {
-    margin-right: 10px;
+    margin-right: 5px;
     /* height: 64px;
     width: 64px; */
 }
@@ -62,9 +62,9 @@ li {
     line-height: 1;
 }
 
-.weather-temp span {
+.weather-temp .unit {
     position: relative;
     font-size: 16px;
-    top: -32px;
+    top: -34px;
 
 }
