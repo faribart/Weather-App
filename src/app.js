@@ -28,10 +28,14 @@ function DisplayTemprature(response){
     Humidity.innerHTML=response.data.temperature.humidity;
     let Wind=document.querySelector("#Wind");
     Wind.innerHTML=Math.round(response.data.wind.speed);
+    let TempIcon=document.querySelector("#icon");
+    TempIcon.setAttribute("src",`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
+    TempIcon.setAttribute("alt",response.data.condition.description);
+
 
 }
 let apiKey="oa5553e83da9c0t3109e1fb49fceca48";
-let query="New York"
+let query="Stuttgart"
 let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${query}&key=${apiKey}&units=metric`
 console.log(apiUrl)
 axios.get(apiUrl).then(DisplayTemprature)
