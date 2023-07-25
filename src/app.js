@@ -34,6 +34,12 @@ function DisplayTemprature(response){
 
 
 }
+function Search(event){
+event.preventdefault();
+
+}
+let form=document.querySelector("search-form");
+form.addEventListener("submit",Search);
 let apiKey="oa5553e83da9c0t3109e1fb49fceca48";
 let query="Stuttgart"
 let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${query}&key=${apiKey}&units=metric`
