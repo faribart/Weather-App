@@ -13,9 +13,9 @@ function FormatData(timestamp){
     return`${day} ${hour}:${minute}`
 }
 function DisplayTemprature(response){
-    console.log(response.data)
     let temp=document.querySelector("#temp");
-    temp.innerHTML=Math.round(response.data.temperature.current);
+    celsiusTemprature=response.data.temperature.current;
+    temp.innerHTML=Math.round(celsiusTemprature);
     let city=document.querySelector("#city");
     city.innerHTML=response.data.city;
     let dateTime=document.querySelector("#dateTime");
@@ -44,5 +44,29 @@ event.preventDefault();
 let cityInputEl=document.querySelector("#city-input");
 Search(cityInputEl.value)
 }
+function ShowFahrenheitTemprature(event){
+event.preventDefault();
+let temperature=document.querySelector("#temp");
+celsiusLink.classList.remove("active")
+fahrenheitLink.classList.add("active")
+let fahrenheitTemp=(celsiusTemprature * 9)/5+32;
+temperature.innerHTML=Math.round(fahrenheitTemp)
+}
+
+function ShowcelsiusTemprature(event){
+event.preventDefault();
+celsiusLink.classList.add("active")
+fahrenheitLink.classList.remove("active")
+let temperature=document.querySelector("#temp");
+temperature.innerHTML=Math.round(celsiusTemprature)
+}
+
 let form=document.querySelector("#search-form");
 form.addEventListener("submit",SubtHandle);
+ let fahrenheitLink=document.querySelector("#fahrenheit");
+ fahrenheitLink.addEventListener("click",ShowFahrenheitTemprature)
+
+ let celsiusLink=document.querySelector("#celsius");
+ celsiusLink.addEventListener("click",ShowcelsiusTemprature)
+
+ let celsiusTemprature=null;
