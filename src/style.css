@@ -91,3 +91,24 @@ li::first-letter{
 .weather-temp .active:hover{
     text-decoration: none;
 }
+
+.weather-forecast{
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+
+
+}
+.forecast-date{
+    font-size: 16px;
+    opacity: .5;
+}
+
+.weather-forecast-min{
+    opacity: 0.5;
+}
+
+.forecastIcn1{
+    width: 85px;
+    height: 85px;
+}
