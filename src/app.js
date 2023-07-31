@@ -61,6 +61,31 @@ let temperature=document.querySelector("#temp");
 temperature.innerHTML=Math.round(celsiusTemprature)
 }
 
+function DisplayForecast(){
+    let forecastElement=document.querySelector("#forecast");
+    let forecastHTML=`<div class="row">`;
+    let days=["Thu","Fri","Sat"]
+    days.forEach(function(day) {
+        forecastHTML=forecastHTML+    
+        `<div class="col-2">
+        <div class="forecast-date">
+            ${day}
+        </div>
+        <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png" class="forecastIcn1" alt="">
+        <div class="weather-forecast-temp">
+            <span class="weather-forecast-max">
+                18°
+            </span>
+            <span class="weather-forecast-min">
+                 12°
+            </span>
+        </div>  
+    </div>`;
+    });
+    forecastHTML=forecastHTML+`</div>`;
+    forecastElement.innerHTML=forecastHTML;
+}
+
 let form=document.querySelector("#search-form");
 form.addEventListener("submit",SubtHandle);
  let fahrenheitLink=document.querySelector("#fahrenheit");
@@ -70,3 +95,4 @@ form.addEventListener("submit",SubtHandle);
  celsiusLink.addEventListener("click",ShowcelsiusTemprature)
 
  let celsiusTemprature=null;
+ DisplayForecast()
