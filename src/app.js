@@ -12,6 +12,12 @@ function FormatData(timestamp){
     let day=days[date.getDay()];
     return`${day} ${hour}:${minute}`
 }
+function FormatDay(timestamp){
+    let date=new Date(timestamp);
+    let days=["Sun","Mon","Teu","Wed","Thu","Fri","Sat"]
+    let day=days[date.getDay()];
+    return`${day}`
+}
 //shecode API
 // function DisplayTemprature(response){
 //     let temp=document.querySelector("#temp");
@@ -100,25 +106,28 @@ temperature.innerHTML=Math.round(celsiusTemprature)
 
 function DisplayForecast(response){
     console.log(response.data.daily)
+    let forcaste=response.data.daily;
     let forecastElement=document.querySelector("#forecast");
     let forecastHTML=`<div class="row">`;
-    let days=["Thu","Fri","Sat"]
-    days.forEach(function(day) {
+    forcaste.forEach(function(forecastDay , index) 
+    {
+        if(index>1){
         forecastHTML=forecastHTML+    
         `<div class="col-2">
         <div class="forecast-date">
-            ${day}
+            ${FormatDay(forecastDay.dt *1000)}
         </div>
-        <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png" class="forecastIcn1" alt="">
+        <img src="https://openweathermap.org/img/wn/${(forecastDay.weather)[0].icon}@2x.png" class="forecastIcn1" alt="">
         <div class="weather-forecast-temp">
             <span class="weather-forecast-max">
-                18°
+                ${Math.round(forecastDay.temp.max)}°
             </span>
             <span class="weather-forecast-min">
-                 12°
+            ${Math.round(forecastDay.temp.min)}°
             </span>
         </div>  
-    </div>`;
+    </div>`;}
+
     });
     forecastHTML=forecastHTML+`</div>`;
     forecastElement.innerHTML=forecastHTML;
