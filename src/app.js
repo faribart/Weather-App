@@ -69,7 +69,7 @@ function DisplayTemprature(response){
     let TempIcon=document.querySelector("#icon");
     TempIcon.setAttribute("src",`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`);
     TempIcon.setAttribute("alt",response.data.condition.description);
-
+    GetForcaste(response.data.coord)
 
 }
 function Search(city){
